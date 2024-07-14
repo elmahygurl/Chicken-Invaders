@@ -218,8 +218,10 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Assets\Alchemist_Breed_PH.png" />
     <Content Include="Assets\back1.jpg" />
+    <Content Include="Assets\back2.jpg" />
     <Content Include="Assets\BigChickenCI4.png" />
     <Content Include="Assets\BigChickenCIU.png" />
+    <Content Include="Assets\bravo.png" />
     <Content Include="Assets\Chickenaut.png" />
     <Content Include="Assets\CIUBoronRailgunLV2.png" />
     <Content Include="Assets\CIUIonBlasterLV5.png" />
@@ -230,8 +232,6 @@
     <Content Include="Assets\MysteriousShip.png" />
     <Content Include="Assets\SuperVulcanChaingunLV12.png" />
     <Content Include="Assets\UCO.png" />
-    <Content Include="Assets\ultra-detailed-nebula-abstract-wallpaper-4.jpg" />
-    <Content Include="Assets\Untitled-1.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -307,14 +307,19 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <None Include="packages.config" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
-    <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\HomeScriptt.js" />
+    <Content Include="Scripts\Chicken.js" />
+    <Content Include="Scripts\GameController.js" />
+    <Content Include="Scripts\Egg.js" />
+    <Content Include="Scripts\Fire.js" />
+    <Content Include="Scripts\Player.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
     <Content Include="Scripts\jquery-3.7.0.slim.js" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.js" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.0.min.map" />
+    <Content Include="Views\Home\play.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -340,7 +345,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Properties\" />
-    <Folder Include="Views\Game\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
