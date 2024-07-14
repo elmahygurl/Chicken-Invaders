@@ -2,5 +2,45 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-
 }
+
+.button {
+    background-color: #e7e7e7;
+    color: black;
+    font-size: 16px;
+    padding: 12px 28px;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    width: 200px; 
+    align-self: center;
+    
+}
+
+.button:hover {
+    background-color: #f44336;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.h1 {
+    font-size: 150%;
+    color:aliceblue;
+    align-self: center;
+    margin-bottom: 40px;
+    /*    font-family: "Lucida Console", "Courier New", monospace;*/
+    font-family: 'Press Start 2P', cursive;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.container {
+    text-align: center;
+    border-radius: 10px;
+}
+

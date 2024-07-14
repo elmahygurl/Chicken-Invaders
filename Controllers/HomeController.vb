@@ -6,4 +6,7 @@
 
         Return View()
     End Function
+    Public Function HowToPlay() As ActionResult
+        Return View("howToPlay")
+    End Function
 End Class
