@@ -44,3 +44,18 @@
     border-radius: 10px;
 }
 
+@keyframes scrollBackground {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 0 100%;
+    }
+}
+
+.backgroundPlay {
+    background-image: url('../Assets/back2.jpg');
+    background-repeat: repeat-y;
+    animation: scrollBackground 10s linear infinite;
+}

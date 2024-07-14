@@ -11,10 +11,9 @@
     <div class="container">
         <h1 style="font-size: 60px; color:aliceblue;">Chicken Invaders</h1>
         <div class="button-container">
-            <button class="button">Start Game</button>
+            <button class="button" onclick="location.href='@Url.Action("Play", "Home")'">Start Game</button>
             <button class="button" onclick="location.href='@Url.Action("howToPlay", "Home")'">How to play</button>
             <button class="button exit-button">Exit</button>  @*handle later*@ 
-            
         </div>
     </div>
 </body>
