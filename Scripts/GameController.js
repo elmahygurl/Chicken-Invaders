@@ -1,11 +1,11 @@
-﻿
-class GameController {
+﻿class GameController {
     constructor() {
         this.canvas = document.getElementById('gameCanvas');
         this.ctx = this.canvas.getContext('2d');
         this.player = new Player(700, 500, this.canvas.width, this.canvas.height, this);
         this.fires = []; 
         this.chickens = [];
+        this.eggs = []; 
         this.gameState = 'initial';
         this.setup();
     }
@@ -27,6 +27,8 @@ class GameController {
         this.checkStateTransition();
         this.updateChickens();
         this.checkCollisions();
+        //this.updateMotherHenShip();
+        this.updateEggs();
     }
 
     updateFires() {
@@ -44,7 +46,46 @@ class GameController {
     //    const animationInterval = setInterval(animateEntry, 1000 / 60); // Adjust speed as needed
     //}
 
+
+    //updateMotherHenShip() {
+    //    if (this.motherHenShip) {
+    //        this.motherHenShip.update();
+
+    //        // Check collisions with player fires
+    //        this.fires.forEach(fire => {
+    //            if (this.motherHenShip.checkCollision(fire)) {
+    //                this.motherHenShip.isHit = true;
+    //                fire.isHit = true;
+    //            }
+    //        });
+
+    //        // Remove mother hen ship if hit and all its eggs
+    //        if (this.motherHenShip.isHit) {
+    //            this.motherHenShip.eggs.forEach(egg => egg.isHit = true);
+    //            this.motherHenShip = null;
+    //        }
+    //    } else {
+    //        // Generate mother hen ship randomly
+    //        if (Math.random() < 0.01) { // Adjust spawn rate as needed
+    //            this.motherHenShip = new MotherHenShip(this.canvas.width, this.canvas.height);
+    //        }
+    //    }
+    //}
+
     
+
+    updateEggs() {
+        if (this.gameState === 'eggRain' && Math.random() < 0.02) { 
+            const x = Math.random() * (this.canvas.width - 90); //within bounds
+            const y = -120; 
+            const type = Math.random() > 0.5 ? 'blue' : 'red';
+            const egg = new Egg(x, y, type);
+            this.eggs.push(egg);
+        }
+        this.eggs.forEach(egg => egg.update());  //existing eggs
+        this.eggs = this.eggs.filter(egg => egg.y <= this.canvas.height); //remove eggs off-screen
+    }
+
     updateChickens() {
         this.chickens.forEach(chicken => chicken.update(this.gameState));
 
@@ -75,6 +116,21 @@ class GameController {
         this.player.draw(this.ctx);
         this.drawFires();
         this.chickens.forEach(chicken => chicken.draw(this.ctx));
+
+        this.drawEggs();
+        
+        //if (this.motherHenShip) {
+        //    this.motherHenShip.draw(this.ctx);
+
+        //    // Draw eggs from mother hen ship
+        //    this.motherHenShip.eggs.forEach(egg => {
+        //        egg.draw(this.ctx);
+        //    });
+        //}
+    }
+
+    drawEggs() {
+        this.eggs.forEach(egg => egg.draw(this.ctx));
     }
 
     drawFires() {
@@ -125,9 +181,14 @@ class GameController {
 
     checkStateTransition() {
         if (this.gameState === 'initial' && this.chickens.length === 0) {
-            this.gameState = Math.random() > 0.5 ? 'matrix' : 'matrixFree';
+            this.gameState = 'matrix';
             this.generateChickenMatrix();
         }
+        if (this.gameState === 'matrix' && this.chickens.length === 0) {
+            this.gameState = 'eggRain';
+            this.generateEggs();
+        }
+
     }
 
     checkCollisions() {
@@ -138,7 +199,14 @@ class GameController {
                     fire.isHit = true;
                 }
             });
+
+            //// Check collisions with mother hen ship
+            //if (this.motherHenShip && this.motherHenShip.checkCollision(fire)) {
+            //    this.motherHenShip.isHit = true;
+            //    fire.isHit = true;
+            //}
         });
+        
         this.fires = this.fires.filter(fire => !fire.isHit);
         this.chickens = this.chickens.filter(chicken => !chicken.isHit);
     }

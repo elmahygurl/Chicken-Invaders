@@ -1,21 +1,22 @@
 ﻿class Egg {
-    constructor(type) {
-        this.type = type;
-        this.isCollected = false;
-        // Initialize egg properties
+    constructor(x, y,type) {
+        this.x = x;
+        this.y = y;
+        this.width = 90; 
+        this.height =120; 
+        this.speedY = 5; 
+        this.image = new Image();
+        this.image.src = type === 'blue' ? '../Assets/MotherHenShip.png' : '../Assets/MotherHenShip (2).png';
+        this.isHit = false;
     }
 
-    drop() {
-        // Implement egg drop logic (e.g., movement, behavior)
+    draw(ctx) {
+        ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
 
-    collect() {
-        this.isCollected = true;
-        // Implement egg collection logic
+    update() {
+        if (!this.isHit) {
+            this.y += this.speedY;
+        }
     }
-
-    // Other egg methods as needed
 }
-
-// Export Egg class
-//export default Egg;
