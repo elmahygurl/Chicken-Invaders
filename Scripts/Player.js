@@ -4,7 +4,7 @@
         this.y = y; 
         this.width = 120;
         this.height = 150; 
-        this.speed = 5; 
+        this.speed = 6; 
         this.canvasWidth = canvasWidth;
         this.canvasHeight = canvasHeight;
         this.gameController = gameController;

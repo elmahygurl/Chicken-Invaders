@@ -315,7 +315,8 @@
     <Content Include="Scripts\GameController.js" />
     <Content Include="Scripts\Egg.js" />
     <Content Include="Scripts\Fire.js" />
-    <Content Include="Scripts\MotherHenShip.js" />
+    <Content Include="Scripts\Gift.js" />
+    <Content Include="Scripts\Boss.js" />
     <Content Include="Scripts\Player.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
