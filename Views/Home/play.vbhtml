@@ -13,6 +13,7 @@ End Code
 
     <canvas id="gameCanvas" width="1530" height="732"></canvas>
 
+    <script src="~/Scripts/MotherHenShip.js"></script>
     <script src="~/Scripts/Fire.js"></script>
     <script src="~/Scripts/Player.js"></script>
     <script src="~/Scripts/Chicken.js"></script>
