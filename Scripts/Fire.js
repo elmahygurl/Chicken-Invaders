@@ -7,7 +7,6 @@
         this.speed = 10; 
         this.image = new Image();
         this.image.src = '/Assets/CIUBoronRailgunLV2.png';
-        
     }
 
     draw(ctx) {

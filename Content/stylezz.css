@@ -29,7 +29,6 @@
     color:aliceblue;
     align-self: center;
     margin-bottom: 40px;
-    /*    font-family: "Lucida Console", "Courier New", monospace;*/
     font-family: 'Press Start 2P', cursive;
 }
 
@@ -50,12 +49,15 @@
     }
 
     to {
-        background-position: 0 100%;
+        background-position: 0 -100%;
     }
 }
 
 .backgroundPlay {
     background-image: url('../Assets/back2.jpg');
     background-repeat: repeat-y;
-    animation: scrollBackground 10s linear infinite;
+    background-size:cover;
+    animation: scrollBackground 2s linear infinite;
 }
+
+
