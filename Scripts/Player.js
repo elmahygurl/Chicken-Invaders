@@ -9,7 +9,8 @@
         this.canvasHeight = canvasHeight;
         this.gameController = gameController;
         this.image = new Image();
-        this.image.src = '/Assets/CIUIonBlasterLV5.png';
+        this.fireType = 'normal';
+        this.image.src = '../Assets/CIUIonBlasterLV5.png';
         document.addEventListener('keydown', this.handleKeyDown.bind(this));
     }
 
@@ -57,7 +58,11 @@
     }
 
     shootFire() {
-        const fireObject = new Fire(this.x + this.width / 2 - 10, this.y); 
+        const fireObject = new Fire(this.x + this.width / 2 - 10, this.y, this.fireType); 
         this.gameController.addFire(fireObject);
+    }
+
+    collectGift(gift) {
+        this.fireType = 'super';
     }
 }

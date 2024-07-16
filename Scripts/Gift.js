@@ -6,7 +6,6 @@
         this.height = 50; 
         this.image = new Image();
         this.image.src = type;
-        //this.image.src = type === 'blue' ? '../Assets/GIFT.png' : '../Assets/GIFT2.png';
         this.isHit = false;
     }
 

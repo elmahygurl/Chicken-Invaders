@@ -1,12 +1,17 @@
 ﻿class Fire {
-    constructor(x, y) {
+    constructor(x, y,type) {
         this.x = x; 
         this.y = y; 
         this.width = 20; 
         this.height = 20; 
         this.speed = 10; 
         this.image = new Image();
-        this.image.src = '/Assets/CIUBoronRailgunLV2.png';
+        //this.fireType = type.includes('../Assets/SuperVulcanChaingunLV12.png') ? 'super' : 'normal';
+        //this.image.src = type;
+        this.fireType = type === 'super' ? 'super' : 'normal';
+        this.image.src = type === 'super' ? '../Assets/SuperVulcanChaingunLV12.png' : '../Assets/CIUBoronRailgunLV2.png';
+        this.isHit = false;
+        //this.image.src = '/Assets/CIUBoronRailgunLV2.png';
     }
 
     draw(ctx) {
