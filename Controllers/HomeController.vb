@@ -10,6 +10,10 @@
         Return View("howToPlay")
     End Function
     Public Function Play() As ActionResult
-        Return View("play") ' Assuming "play.vbhtml" is your view for the game
+        Return View("play")
     End Function
+    Public Function Losing() As ActionResult
+        Return View("losing")
+    End Function
+
 End Class
