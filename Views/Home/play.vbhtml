@@ -14,6 +14,7 @@ End Code
     <canvas id="gameCanvas" width="1530" height="732"></canvas>
 
     <script src="~/Scripts/Boss.js"></script>
+    <script src="~/Scripts/DrumStick.js"></script>
     <script src="~/Scripts/Strike.js"></script>
     <script src="~/Scripts/Gift.js"></script>
     <script src="~/Scripts/Fire.js"></script>

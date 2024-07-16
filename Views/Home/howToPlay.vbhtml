@@ -28,7 +28,7 @@ End Code
         <ul style="color:aliceblue" class="instructions-list">
             <li>Use the <strong><i class="fas fa-arrow-up"></i> <i class="fas fa-arrow-down"></i> <i class="fas fa-arrow-left"></i> <i class="fas fa-arrow-right"></i></strong> keys to move your spaceship.</li>
             <li>Press the space bar on your <strong><i class="fas fa-keyboard"></i></strong> to shoot at the chickens.</li>
-            <li>Collect the chicken bits falling from killed chickens.</li>
+            @*<li>Collect the chicken bits falling from killed chickens.</li>*@
             <li>Collect presents to gain helpful power-ups.</li>
             <li style="font-size: 50px;"><i class="fas fa-turkey"></i><strong> DO NOT TOUCH CHICKENS!!! </strong><i class="fas fa-turkey"></i></li>
             <li style="font-size: 50px;"><i class="fas fa-egg"></i><strong> DO NOT TOUCH FALLING EGGS </strong> <i class="fas fa-egg"></i></li>
