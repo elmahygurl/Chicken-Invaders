@@ -33,6 +33,8 @@
         if (this.gameState === 'boss') {
             this.updateBoss();
         }
+        this.checkCollisions();
+        this.checkStateTransition();
     }
 
     updateFires() {
@@ -98,7 +100,6 @@
     }
 
     draw() {
-        
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.player.draw(this.ctx);
         
@@ -197,7 +198,7 @@
     spawnBoss() {
         const bossX = (this.canvas.width - 200) / 2;
         const bossY = -200;
-        this.boss = new Boss(bossX, bossY, '../Assets/UCO.png');
+        this.boss = new Boss(bossX, bossY, this.canvas.width);
     }
 
     checkStateTransition() {
@@ -205,13 +206,17 @@
             this.gameState = 'matrix';
             this.generateChickenMatrix();
         }
-        if (this.gameState === 'matrix' && this.chickens.length === 0) {
+        else if (this.gameState === 'matrix' && this.chickens.length === 0) {
             this.gameState = 'eggRain';
             this.generateEggs();
         }
-        if (this.gameState === 'eggRain' && this.eggs.length === 0) {
+        else if (this.gameState === 'eggRain' && this.eggs.length === 0) {
             this.gameState = 'boss';
             this.spawnBoss();
+        } else if (this.gameState === 'win' ) {
+            console.log("gamestate now= ", this.gameState);
+            alert("YOU WIN ");
+            
         }
 
     }
@@ -236,10 +241,34 @@
                     }
                 }
             });
+
+            if (this.boss && this.boss.checkCollision(fire)) {
+                fire.isHit = true;
+                this.boss.takeDamage(fire.fireType);
+                if (this.boss.health <= 0) {
+                    this.boss = null; //boss defeated
+                    this.gameState = 'win';
+                }
+            }
+        });
+
+        this.gifts.forEach(gift => {
+            if (this.checkCollision(this.player, gift)) {
+                gift.isHit = true;
+                this.player.collectGift(gift);
+            }
         });
 
         this.fires = this.fires.filter(fire => !fire.isHit);
         this.chickens = this.chickens.filter(chicken => !chicken.isHit);
         this.eggs = this.eggs.filter(egg => !egg.isHit);
+        this.gifts = this.gifts.filter(gift => !gift.isHit);
+    }
+
+    checkCollision(obj1, obj2) {
+        return obj1.x < obj2.x + obj2.width &&
+            obj1.x + obj1.width > obj2.x &&
+            obj1.y < obj2.y + obj2.height &&
+            obj1.y + obj1.height > obj2.y;
     }
 }

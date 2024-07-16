@@ -233,6 +233,9 @@
     <Content Include="Assets\MotherHenShip.png" />
     <Content Include="Assets\MysteriousShip.png" />
     <Content Include="Assets\RedChicken.gif" />
+    <Content Include="Assets\strike.png" />
+    <Content Include="Assets\strikeL.png" />
+    <Content Include="Assets\strikeR.png" />
     <Content Include="Assets\SuperVulcanChaingunLV12.png" />
     <Content Include="Assets\UCO.png" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -317,6 +320,7 @@
     <Content Include="Scripts\Fire.js" />
     <Content Include="Scripts\Gift.js" />
     <Content Include="Scripts\Boss.js" />
+    <Content Include="Scripts\Strike.js" />
     <Content Include="Scripts\Player.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
