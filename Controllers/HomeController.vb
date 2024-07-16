@@ -15,5 +15,8 @@
     Public Function Losing() As ActionResult
         Return View("losing")
     End Function
+    Public Function Winning() As ActionResult
+        Return View("winning")
+    End Function
 
 End Class
