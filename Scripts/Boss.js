@@ -7,7 +7,7 @@
         this.image = new Image();
         this.image.src = '../Assets/UCO.png';
         this.isHit = false;
-        this.health = 50;
+        this.health = 70;
         this.speedX = Math.random() * 6 + 4; //random speed between 4 and 10
         this.direction = 1; // 1 for moving right, -1 for moving left
         this.canvasWidth = canvasWidth;
@@ -31,7 +31,6 @@
         this.strikes.forEach(strike => strike.update());
         
         this.strikes = this.strikes.filter(strike => strike.y <= this.canvasWidth);
-       /* if (this.x )*/
     }
 
     draw(ctx) {
