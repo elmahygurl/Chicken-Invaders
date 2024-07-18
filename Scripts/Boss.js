@@ -12,7 +12,7 @@
         this.direction = 1; // 1 for moving right, -1 for moving left
         this.canvasWidth = canvasWidth;
         this.strikes = [];
-        this.strikeInterval = setInterval(() => this.emitStrike(), 1800); 
+        this.strikeInterval = setInterval(() => this.emitStrike(), 2100); 
         this.isCollide = false;
     }
 
