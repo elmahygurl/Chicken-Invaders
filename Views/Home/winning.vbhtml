@@ -20,6 +20,9 @@ End Code
             <div class="col-md-6 d-flex flex-column align-items-center">
                 <button class="button mb-2" onclick="location.href='@Url.Action("Play", "Home")'">Play Again</button>
                 <button class="button" onclick="location.href='@Url.Action("Index", "Home")'">Exit</button>
+                <p style="color:aliceblue" id="current-score"></p>
+                <p style="color:aliceblue" id="high-score"></p>
+                <p id="new-high-score" style="display: none;color:aliceblue;">Congratulations! New High Score!</p>
             </div>
         </div>
     </div>
@@ -28,3 +31,16 @@ End Code
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const currentScore = localStorage.getItem('currentScore');
+        const highScore = localStorage.getItem('highScore');
+
+        document.getElementById('current-score').innerText = `Your Score: ${currentScore}`;
+        document.getElementById('high-score').innerText = `High Score: ${highScore}`;
+
+        if (currentScore == highScore) {
+            document.getElementById('new-high-score').style.display = 'block';
+        }
+    });
+</script>

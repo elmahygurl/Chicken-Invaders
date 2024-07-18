@@ -12,7 +12,9 @@ class GameController {
         this.drumsticks = [];
         this.gameState = 'initial';
         this.boss = null;
+        this.resetScores();
         this.setup();
+        
     }
 
     setup() {
@@ -242,9 +244,11 @@ class GameController {
             this.spawnBoss();
         } else if (this.gameState === 'win') {
             console.log("gamestate now= ", this.gameState);
+            this.player.saveScore();
             window.location.href = '/Home/winning'
             //alert("YOU WIN ");
         } else if (this.gameState === 'lose') {
+            this.player.saveScore();
             console.log('loser!');
             window.location.href = '/Home/losing'; 
         }
@@ -257,6 +261,9 @@ class GameController {
             obj1.y + obj1.height > obj2.y;
     }
 
+    resetScores() {
+        localStorage.removeItem('currentScore');
+    }
 
     checkCollisions() {
         //between player and gifts

@@ -1,6 +1,5 @@
 ﻿class Player {
     constructor(x, y, canvasWidth, canvasHeight, gameController) {
-        
         this.width = 90;
         this.height = 120;
         this.x = canvasWidth / 2 - this.width / 2;;
@@ -81,6 +80,14 @@
                 break;
             default:
                 break;
+        }
+    }
+    saveScore() {
+        const currentScore = this.score;
+        const lastScore = parseInt(localStorage.getItem('highScore')) || 0;
+        localStorage.setItem('currentScore', currentScore);
+        if (currentScore > lastScore) {
+            localStorage.setItem('highScore', currentScore);
         }
     }
 
