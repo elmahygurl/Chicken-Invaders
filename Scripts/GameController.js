@@ -1,15 +1,17 @@
-﻿class GameController {
+﻿let flagDraw = true;
+let maxLoss = 1;
+class GameController {
     constructor() {
         this.canvas = document.getElementById('gameCanvas');
         this.ctx = this.canvas.getContext('2d');
         this.player = new Player(700, 500, this.canvas.width, this.canvas.height, this);
-        this.fires = []; 
+        this.fires = [];
         this.chickens = [];
-        this.eggs = []; 
+        this.eggs = [];
         this.gifts = [];
-        this.drumsticks = []; 
+        this.drumsticks = [];
         this.gameState = 'initial';
-        this.boss = null; 
+        this.boss = null;
         this.setup();
     }
 
@@ -18,7 +20,7 @@
         this.generateInitialChicken();
     }
 
-   
+
     handleKeyDown(event) {
         this.player.handleKeyDown(event);
     }
@@ -34,19 +36,19 @@
         if (this.gameState === 'boss') {
             this.updateBoss();
         }
-                
+
     }
 
     //updateDrumsticks() {
     //    this.drumsticks.forEach(drumstick => drumstick.update());
     //    this.drumsticks = this.drumsticks.filter(drumstick => drumstick.y <= this.canvas.height); // Remove drumsticks off-screen
     //}
-    
+
 
     updateFires() {
         this.player.update();
         this.fires.forEach(fire => fire.update());
-        this.fires = this.fires.filter(fire => fire.y >= 0); 
+        this.fires = this.fires.filter(fire => fire.y >= 0);
     }
     //animateChickenEntry(chicken) {
     //    const animateEntry = () => {
@@ -57,18 +59,18 @@
     //    };
     //    const animationInterval = setInterval(animateEntry, 1000 / 60); // Adjust speed as needed
     //}
-    
+
     updateBoss() {
         if (this.boss) {
             this.boss.update();
         }
     }
-        
+
 
     updateEggs() {
-        if (this.gameState === 'eggRain' && Math.random() < 0.02) { 
+        if (this.gameState === 'eggRain' && Math.random() < 0.02) {
             const x = Math.random() * (this.canvas.width - 90); //within bounds
-            const y = -120; 
+            const y = -120;
             const type = Math.random() > 0.5 ? 'blue' : 'red';
             const egg = new Egg(x, y, type);
             this.eggs.push(egg);
@@ -83,9 +85,9 @@
         if (this.gameState === 'matrix') {
             this.chickens.forEach(chicken => {
                 if (chicken.row % 2 === 0) {
-                    chicken.x += 2; 
+                    chicken.x += 2;
                 } else {
-                    chicken.x -= 2; 
+                    chicken.x -= 2;
                 }
 
                 // don't move outside canvas bounds
@@ -97,7 +99,7 @@
                 }
             });
         }
-        
+
     }
 
     updateGifts() {
@@ -107,7 +109,9 @@
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.player.draw(this.ctx);
+        if (flagDraw) {
+            this.player.draw(this.ctx);
+        }
         
         this.drawFires();
         this.chickens.forEach(chicken => chicken.draw(this.ctx));
@@ -140,7 +144,8 @@
         setInterval(() => {
             this.update();
             this.draw();
-        }, 1000 / 60); 
+            this.checkCollisions();
+        }, 1000 / 60);
     }
 
     addFire(fire) {
@@ -149,36 +154,40 @@
 
     generateInitialChicken() {
         const type = Math.random() > 0.5 ? 'blue' : 'red';
-        const x = Math.random() * (this.canvas.width - 180); 
-        const y = Math.random() * (this.canvas.height - 180);
+        const x = Math.random() * (this.canvas.width - 180);
+        const y = Math.random() * (this.canvas.height - 230 - 50);
         console.log("chicken dimensions start x= ", x, " y= ", y);
-        const chicken = new Chicken(180,180,x, y, type, this.canvas.width, this.canvas.height);
+        const chicken = new Chicken(180, 180, x, y, type, this.canvas.width, this.canvas.height);
         this.chickens.push(chicken);
-        //this.animateChickenEntry(chicken); 
     }
 
-   
+
     generateChickenMatrix() {
         const rows = 4;
         const columns = 7;
         const spacing = 20;
         const chickenWidth = 130;
         const chickenHeight = 130;
+        const bottomBoundary = 50;
 
         for (let row = 0; row < rows; row++) {
-            
-                for (let col = 0; col < columns; col++) {
-                    const x = row % 2 === 0 ? col * (chickenWidth + spacing) : this.canvas.width - (col * (chickenWidth + spacing) + chickenWidth);
-                    const y = row * (chickenHeight + spacing);
-                    const type = Math.random() > 0.5 ? 'blue' : 'red';
-                    const chicken = new Chicken(chickenWidth, chickenHeight, x, y, type, this.canvas.width, this.canvas.height, row);
-                    this.chickens.push(chicken);
-                    //this.animateChickenEntry(chicken);
-                    //console.log("chicken row = ", row, " ,col= ", col, " generated");
-                }
+
+            for (let col = 0; col < columns; col++) {
+                const x = row % 2 === 0 ? col * (chickenWidth + spacing) : this.canvas.width - (col * (chickenWidth + spacing) + chickenWidth);
+                const y = row * (chickenHeight + spacing);
+                if (y + chickenHeight > this.canvas.height - bottomBoundary) {
+                    // skip adding chickens in  row if exceeds bottom boundary
+                    continue;
+                } 
+                const type = Math.random() > 0.5 ? 'blue' : 'red';
+                const chicken = new Chicken(chickenWidth, chickenHeight, x, y, type, this.canvas.width, this.canvas.height, row);
+                this.chickens.push(chicken);
+                //this.animateChickenEntry(chicken);
+                //console.log("chicken row = ", row, " ,col= ", col, " generated");
+            }
             console.log("generated row= ", row);
         }
-        
+
     }
 
     getRandomIndices(total, count) {
@@ -192,7 +201,7 @@
         return indices;
     }
     generateEggs() {
-        const numEggs =12;
+        const numEggs = 12;
         const giftEggIndices = this.getRandomIndices(numEggs, 5);
 
         for (let i = 0; i < numEggs; i++) {
@@ -229,16 +238,23 @@
         else if (this.gameState === 'eggRain' && this.eggs.length === 0) {
             this.gameState = 'boss';
             this.spawnBoss();
-        } else if (this.gameState === 'win' ) {
+        } else if (this.gameState === 'win') {
             console.log("gamestate now= ", this.gameState);
+            window.location.href = '/Home/winning'
             //alert("YOU WIN ");
         } else if (this.gameState === 'lose') {
             console.log('loser!');
-            window.location.href = '/Home/losing';
+            window.location.href = '/Home/losing'; 
         }
     }
 
- 
+    checkCollision(obj1, obj2) {
+        return obj1.x < obj2.x + obj2.width &&
+            obj1.x + obj1.width > obj2.x &&
+            obj1.y < obj2.y + obj2.height &&
+            obj1.y + obj1.height > obj2.y;
+    }
+
 
     checkCollisions() {
         //between player and gifts
@@ -257,18 +273,38 @@
             }
         });
 
-        //with boss 
-        //with strikes
+        //player with strikes
+        if (this.boss) {  //new
+        this.boss.strikes.forEach(strike => {
+            if (this.checkCollision(this.player, strike) && maxLoss) {
+                maxLoss = 0;
+                /*strike.isHit = true;*/
+                this.player.handleCollision(strike);
+                setTimeout(1500);
+            }
+        });
+        }
 
-        // Check collisions between player and chickens
+        //between player and chickens
         this.chickens.forEach(chicken => {
-            if (this.checkCollision(this.player, chicken)) {
-                chicken.isCollide = true;
+            if (this.checkCollision(this.player, chicken) && maxLoss) {
+                maxLoss = 0;
+                //chicken.isHit = true;
+                //flagDraw = false;
                 this.player.handleCollision(chicken);
+                setTimeout(1500);
             }
         });
 
-        // Handle collisions between player fires and game entities
+        //between player and boss
+        if (this.boss && this.checkCollision(this.player, this.boss) && maxLoss) {
+            /*this.boss.isHit = true;*/
+            maxLoss = 0;
+            this.player.handleCollision(this.boss);
+            setTimeout(1500);
+        }
+
+        //between player fires and game entities
         this.fires.forEach(fire => {
             this.chickens.forEach(chicken => {
                 if (chicken.checkCollision(fire)) {
@@ -297,24 +333,20 @@
                 fire.isHit = true;
                 this.boss.takeDamage(fire.fireType);
                 if (this.boss.health <= 0) {
-                    this.boss = null; // boss defeated
+                    this.boss = null; //boss defeated
                     this.gameState = 'win';
                 }
             }
         });
 
-        // Filter out entities that are hit
+        //remove entities that hit
         this.fires = this.fires.filter(fire => !fire.isHit);
         this.chickens = this.chickens.filter(chicken => !chicken.isHit);
         this.eggs = this.eggs.filter(egg => !egg.isHit);
         this.gifts = this.gifts.filter(gift => !gift.isHit);
         this.drumsticks = this.drumsticks.filter(drumstick => !drumstick.isHit);
+
     }
 
-    checkCollision(obj1, obj2) {
-        return obj1.x < obj2.x + obj2.width &&
-            obj1.x + obj1.width > obj2.x &&
-            obj1.y < obj2.y + obj2.height &&
-            obj1.y + obj1.height > obj2.y;
-    }
+
 }

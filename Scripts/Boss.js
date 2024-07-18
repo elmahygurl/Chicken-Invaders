@@ -7,12 +7,13 @@
         this.image = new Image();
         this.image.src = '../Assets/UCO.png';
         this.isHit = false;
-        this.health = 20;
+        this.health = 50;
         this.speedX = Math.random() * 6 + 4; //random speed between 4 and 10
         this.direction = 1; // 1 for moving right, -1 for moving left
         this.canvasWidth = canvasWidth;
         this.strikes = [];
-        this.strikeInterval = setInterval(() => this.emitStrike(), 1000); 
+        this.strikeInterval = setInterval(() => this.emitStrike(), 1800); 
+        this.isCollide = false;
     }
 
     update() {
@@ -58,10 +59,11 @@
 
     takeDamage(fireType) {
         if (fireType === 'super') {
-            this.health -= 1; 
+            this.health -= 2; 
+            console.log("this. health now = ", this.health);
         } else {
             console.log("this. health now = ", this.health);
-            this.health -= 0.5; 
+            this.health -= 1; 
         }
     }
 }

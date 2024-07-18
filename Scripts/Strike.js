@@ -22,17 +22,18 @@
 
     update() {
         this.y += this.speedY;
-        this.x += this.speedX * Math.cos(this.angle);
+            this.x += this.speedX * Math.cos(this.angle);
+        
     }
 
     draw(ctx) {
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
 
-    checkCollision(obj) {
-        return this.x < obj.x + obj.width &&
-            this.x + this.width > obj.x &&
-            this.y < obj.y + obj.height &&
-            this.y + this.height > obj.y;
-    }
+    //checkCollision(obj) {
+    //    return this.x < obj.x + obj.width &&
+    //        this.x + this.width > obj.x &&
+    //        this.y < obj.y + obj.height &&
+    //        this.y + this.height > obj.y;
+    //}
 }

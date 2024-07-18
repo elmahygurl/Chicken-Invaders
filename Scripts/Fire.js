@@ -2,7 +2,7 @@
     constructor(x, y,type) {
         this.x = x; 
         this.y = y; 
-        this.width = 20; 
+        this.width = 22; 
         this.height = 20; 
         this.speed = 10; 
         this.image = new Image();

@@ -10,11 +10,13 @@
         this.canvasHeight = canvasHeight;
         this.speed = 5; 
         this.isHit = false;
+        this.isCollide = false;
         this.speedX = (Math.random() * 4) - 2;
         this.speedY = (Math.random() * 4) - 2;
+        this.bottomBoundary = 140;
 
         this.image = new Image();
-        this.image.src = type === 'blue' ? '../Assets/BlueChicken.gif' : '../Assets/RedChicken.gif';
+        this.image.src = type === 'blue' ? '../Assets/BlueChicken.png' : '../Assets/RedChicken.gif';
         this.row = row; 
         this.initialX = x;
         this.initialY = -h - Math.random() * 200; //for entry from top
@@ -27,23 +29,32 @@
 
 
     update(gameState) {
-        //if (gameState === 'matrix' && this.speedX > 0 ) {
-        ///*console.log("this.speedX before", this.speedX);*/
-        //    this.speedX = 5;
-        //    this.speedY = 0;
-            
-        //}
-        this.x += this.speedX;
-        this.y += this.speedY;
+            this.x += this.speedX;
+            this.y += this.speedY;
 
-        //reverse direction if  hits the canvas edges
-        if (this.x <= 0 || this.x + this.width >= this.canvasWidth) {
-            console.log("here");
-            this.speedX *= -1;
-        }
-        if (this.y <= 0 || this.y + this.height >= this.canvasHeight) {
-            this.speedY *= -1;
-        }
+            ////reverse direction if  hits the canvas edges
+            //if (this.x <= 0 || this.x + this.width >= this.canvasWidth) {
+            //    console.log("went outside canvas");
+            //    this.speedX *= -1;
+            //}
+            //if (this.y <= 0 || this.y + this.height >= this.canvasHeight) {
+            //    this.speedY *= -1;
+            //}
+            // no moving into the last 50px of the canvas height
+            if (this.y + this.height > this.canvasHeight - this.bottomBoundary) {
+                this.y = this.canvasHeight - this.bottomBoundary - this.height;
+                this.speedY *= -1;
+            }
+
+            // Reverse direction if hits the canvas edges
+            if (this.x <= 0 || this.x + this.width >= this.canvasWidth) {
+                console.log("went outside canvas");
+                this.speedX *= -1;
+            }
+            if (this.y <= 0) {
+                this.speedY *= -1;
+            }
+
     }
 
 
@@ -57,13 +68,6 @@
         );
     }
 
-     //flyIn() {
-     //       if (this.y < this.initialY && this.x < this.initialX) {
-     //           this.y += 2; 
-     //           this.x += 2;
-     //       } else {
-     //           this.isFlyingIn = false; 
-     //       }
-     //}
+     
     
 }

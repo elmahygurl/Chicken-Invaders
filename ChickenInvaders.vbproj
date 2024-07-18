@@ -222,13 +222,20 @@
     <Content Include="Assets\BigChickenCI4.png" />
     <Content Include="Assets\BlueChicken.gif" />
     <Content Include="Assets\BigChickenCIU.png" />
+    <Content Include="Assets\BlueChicken.png" />
     <Content Include="Assets\bravo.png" />
     <Content Include="Assets\Chickenaut.png" />
     <Content Include="Assets\CIUBoronRailgunLV2.png" />
     <Content Include="Assets\CIUIonBlasterLV5.png" />
+    <Content Include="Assets\drumstick.png" />
+    <Content Include="Assets\drumstickL.png" />
+    <Content Include="Assets\drumstickR.png" />
     <Content Include="Assets\Feather.png" />
     <Content Include="Assets\GIFT.png" />
     <Content Include="Assets\GIFT2.png" />
+    <Content Include="Assets\hahaha-laughing.gif" />
+    <Content Include="Assets\laugh.png" />
+    <Content Include="Assets\life.png" />
     <Content Include="Assets\MotherHenShip %282%29.png" />
     <Content Include="Assets\MotherHenShip.png" />
     <Content Include="Assets\MysteriousShip.png" />
@@ -320,6 +327,7 @@
     <Content Include="Scripts\Fire.js" />
     <Content Include="Scripts\Gift.js" />
     <Content Include="Scripts\Boss.js" />
+    <Content Include="Scripts\DrumStick.js" />
     <Content Include="Scripts\Strike.js" />
     <Content Include="Scripts\Player.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
@@ -329,6 +337,8 @@
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.0.min.map" />
     <Content Include="Views\Home\play.vbhtml" />
+    <Content Include="Views\Home\losing.vbhtml" />
+    <Content Include="Views\Home\winning.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

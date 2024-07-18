@@ -26,7 +26,6 @@ End Code
         </div>
     </div>
 
-    <script src="~/Scripts/jquery.min.js"></script>
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
 </body>
 </html>
