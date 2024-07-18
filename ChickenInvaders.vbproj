@@ -306,6 +306,10 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <Content Include="Content\stylezz.css" />
+    <Content Include="screenshots\boss.JPG" />
+    <Content Include="screenshots\loser.JPG" />
+    <Content Include="screenshots\play.JPG" />
+    <Content Include="screenshots\win.JPG" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
