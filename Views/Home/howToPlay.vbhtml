@@ -31,6 +31,7 @@ End Code
             @*<li>Collect the chicken bits falling from killed chickens.</li>*@
             @*<li>Shooting eggs might get you presents.</li>*@
             <li ><i class="fas fa-gift"></i><strong> Shooting eggs might get you presents. Catch them if you can </strong><i class="fas fa-gift"></i></li>
+            <li><i class="fas fa-drumstick-bite"></i><strong> Collecting drumsticks increases your score </strong><i class="fas fa-drumstick-bite"></i></li>
             <li style="font-size: 50px;"><i class="fas fa-turkey"></i><strong> DO NOT TOUCH CHICKENS!!! </strong><i class="fas fa-turkey"></i></li>
             <li style="font-size: 50px;"><i class="fas fa-egg"></i><strong> DO NOT TOUCH FALLING EGGS </strong> <i class="fas fa-egg"></i></li>
             <li style="font-size: 50px;"><i class="fas fa-bolt"></i><strong> AVOID STRIKES AT ALL COSTS </strong> <i class="fas fa-bolt"></i></li>
