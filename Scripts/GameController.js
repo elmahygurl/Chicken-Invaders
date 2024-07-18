@@ -109,9 +109,7 @@ class GameController {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        if (flagDraw) {
-            this.player.draw(this.ctx);
-        }
+        
         
         this.drawFires();
         this.chickens.forEach(chicken => chicken.draw(this.ctx));
@@ -121,6 +119,9 @@ class GameController {
         //this.drawDrumsticks();
         if (this.gameState === 'boss' && this.boss) {
             this.boss.draw(this.ctx);
+        }
+        if (flagDraw) {
+            this.player.draw(this.ctx);
         }
     }
 
