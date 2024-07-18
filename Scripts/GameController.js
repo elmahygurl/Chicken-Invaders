@@ -33,16 +33,17 @@ class GameController {
         this.checkCollisions();
         this.updateEggs();
         this.updateGifts();
+        this.updateDrumsticks();
         if (this.gameState === 'boss') {
             this.updateBoss();
         }
 
     }
 
-    //updateDrumsticks() {
-    //    this.drumsticks.forEach(drumstick => drumstick.update());
-    //    this.drumsticks = this.drumsticks.filter(drumstick => drumstick.y <= this.canvas.height); // Remove drumsticks off-screen
-    //}
+    updateDrumsticks() {
+        this.drumsticks.forEach(drumstick => drumstick.update());
+        this.drumsticks = this.drumsticks.filter(drumstick => drumstick.y <= this.canvas.height); 
+    }
 
 
     updateFires() {
@@ -116,7 +117,7 @@ class GameController {
 
         this.drawEggs();
         this.drawGifts();
-        //this.drawDrumsticks();
+        this.drawDrumsticks();
         if (this.gameState === 'boss' && this.boss) {
             this.boss.draw(this.ctx);
         }
@@ -137,9 +138,9 @@ class GameController {
         this.gifts.forEach(gift => gift.draw(this.ctx));
     }
 
-    //drawDrumsticks() {
-    //    this.drumsticks.forEach(drumstick => drumstick.draw(this.ctx));
-    //}
+    drawDrumsticks() {
+        this.drumsticks.forEach(drumstick => drumstick.draw(this.ctx));
+    }
 
     startGame() {
         setInterval(() => {
@@ -263,6 +264,12 @@ class GameController {
             if (this.checkCollision(this.player, gift)) {
                 gift.isHit = true;
                 this.player.collectGift(gift);
+            }
+        });
+        this.drumsticks.forEach(drumstick => {
+            if (this.checkCollision(this.player, drumstick)) {
+                drumstick.isHit = true;
+                this.player.increasescore();
             }
         });
 

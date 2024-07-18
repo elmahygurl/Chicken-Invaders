@@ -24,9 +24,9 @@
             ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
             console.log("player x= ", this.x, " and y= ", this.y);
         }
-        //ctx.font = '24px Arial';   //score
-        //ctx.fillStyle = '#ffffff';
-        //ctx.fillText(`Score: ${this.score}`, this.canvasWidth - 150, 30); 
+        ctx.font = '24px Arial';   //score
+        ctx.fillStyle = '#ffffff';
+        ctx.fillText(`Score: ${this.score}`,20, 30); 
         for (let i = 0; i < this.lives; i++) {
             const lifeImage = new Image();
             lifeImage.src = '../Assets/life.png';
@@ -93,9 +93,10 @@
         this.fireType = 'super';
     }
 
-    //increaseScore(points) {
-    //    this.score += points;
-    //}
+
+    increasescore() {
+        this.score += 10;
+    }
 
     handleCollision(entity) {
         this.visible = false;
