@@ -7,6 +7,7 @@ The game progresses through different states, including initial levels, a chicke
 The player's score is saved locally, and the game will notify the player if they achieve a new high score.
 
 ## Features
+- Instructions page for game rules.
 - Player movement with keyboard controls.
 - Collecting gifts powers the fires up.
 - Shooting mechanic with different fire types.
@@ -16,6 +17,11 @@ The player's score is saved locally, and the game will notify the player if they
 - Current score and high score are saved.
 
 ## Screenshots
+![image](https://github.com/elmahygurl/Chicken-Invaders/blob/master/screenshots/win.JPG)
+![image](https://github.com/elmahygurl/Chicken-Invaders/blob/master/screenshots/play.JPG)
+![image](https://github.com/elmahygurl/Chicken-Invaders/blob/master/screenshots/loser.JPG)
+![image](https://github.com/elmahygurl/Chicken-Invaders/blob/master/screenshots/boss.JPG)
+
 
 ### Installation
 
